@@ -12,7 +12,7 @@
 
             <p><strong>Email:</strong> {{ $company->email ?? '—' }}</p>
             <p><strong>Website:</strong> {{ $company->website ?? '—' }}</p>
-            <p><strong>Total Employees:</strong> {{ $company->employees_count }} (from withCount)</p>
+            <p><strong>Total Employees:</strong> {{ $company->employees->count() }}</p>
 
             <hr class="my-6">
 
