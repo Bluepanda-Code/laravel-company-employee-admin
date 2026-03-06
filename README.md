@@ -1,52 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Company Employee Admin
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based web application for managing companies and their employees. This application provides a simple admin interface to create, read, update, and delete companies and employees, with features like search, filtering, and soft delete.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Company Management**: Create, edit, delete companies with logo upload
+- **Employee Management**: Add, edit, and soft delete employees
+- **Search & Filter**: Search employees by name/email and filter by company
+- **Dashboard**: Overview of companies with employee counts
+- **Soft Delete**: Employees can be soft deleted and restored
+- **Responsive UI**: Built with Tailwind CSS for mobile-friendly design
+- **Authentication**: User authentication system (if implemented)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Before you begin, ensure you have the following installed on your system:
 
-## Learning Laravel
+- **PHP** >= 8.1
+- **Composer** (PHP dependency manager)
+- **Node.js** >= 16.x and **npm** (for frontend assets)
+- **MySQL** or **PostgreSQL** (database)
+- **Git** (for cloning the repository)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Follow these steps to set up the project locally:
 
-## Laravel Sponsors
+### 1. Clone the Repository
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+git clone https://github.com/Bluepanda-Code/laravel-company-employee-admin.git
+cd laravel-company-employee-admin
+```
 
-### Premium Partners
+### 2. Install PHP Dependencies
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+composer install
+```
+
+### 3. Install Node.js Dependencies
+
+```bash
+npm install
+```
+
+### 4. Environment Configuration
+
+Copy the `.env.example` file to `.env` and configure your environment variables:
+
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file to set up your database connection and other settings:
+
+```env
+APP_NAME="Laravel Company Employee Admin"
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=company_employee_admin
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+# Other configurations...
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+### 5. Database Setup
+
+Create a database in your MySQL/PostgreSQL server that matches the `DB_DATABASE` value in your `.env` file.
+
+Run the migrations to create the database tables:
+
+```bash
+php artisan migrate
+```
+
+(Optional) Seed the database with sample data:
+
+```bash
+php artisan db:seed
+```
+
+### 6. Build Frontend Assets
+
+Compile the CSS and JavaScript assets:
+
+For development (with hot reload):
+
+```bash
+npm run dev
+```
+
+For production build:
+
+```bash
+npm run build
+```
+
+### 7. Start the Development Server
+
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`.
+
+## Usage
+
+### Accessing the Application
+
+1. Open your browser and navigate to `http://localhost:8000`
+2. Register/Login if authentication is enabled
+3. Use the dashboard to manage companies and employees
+
+### Key Routes
+
+- `/companies` - List all companies
+- `/companies/create` - Create a new company
+- `/employees` - List all employees with search/filter
+- `/employees/create` - Create a new employee
+
+### Admin Features
+
+- **Companies**: View, create, edit, delete companies. Cannot delete companies with employees.
+- **Employees**: View, create, edit, soft delete employees. Cannot delete the last employee in a company.
+- **Search**: Use the search bar to find employees by name or email.
+- **Filter**: Filter employees by company using the dropdown.
+
+## Screenshots
+
+### Dashboard
+![Dashboard Screenshot](screenshots/dashboard.png)
+
+### Companies List
+![Companies List Screenshot](screenshots/companies-index.png)
+
+### Employees List
+![Employees List Screenshot](screenshots/employees-index.png)
+
+### Add Company
+![Add Company Screenshot](screenshots/company-create.png)
+
+### Add Employee
+![Add Employee Screenshot](screenshots/employee-create.png)
+
+*Note: Replace the placeholder images in the `screenshots/` folder with actual screenshots of your application.*
+
+## Project Structure
+
+```
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── CompanyController.php
+│   │   └── EmployeeController.php
+│   └── Models/
+│       ├── Company.php
+│       ├── Employee.php
+│       └── User.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── resources/
+│   ├── views/
+│   │   ├── companies/
+│   │   ├── employees/
+│   │   └── layouts/
+│   └── css/
+├── routes/
+│   └── web.php
+└── public/
+    └── storage/ (for uploaded logos)
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are welcome! Please follow these steps:
 
-## Code of Conduct
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you have any questions or issues, please open an issue on GitHub or contact the maintainers.
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
