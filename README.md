@@ -146,10 +146,10 @@ The application will be available at `http://localhost:8000`.
 ![Dashboard Screenshot](screenshots/dashboard.png)
 
 ### Companies List
-![Companies List Screenshot](screenshots/companies-index.png)
+![Companies List Screenshot](screenshots/company-index.png)
 
 ### Employees List
-![Employees List Screenshot](screenshots/employees-index.png)
+![Employees List Screenshot](screenshots/employee-index.png)
 
 ### Add Company
 ![Add Company Screenshot](screenshots/company-create.png)
